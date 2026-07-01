@@ -1,0 +1,33 @@
+<mat-sidenav-container class="chat-container">
+  <mat-sidenav
+    class="sidebar-panel"
+    [mode]="'over'"
+    [opened]="sidenavOpen()"
+    (closedStart)="closeSidenav()"
+    [fixedInViewport]="true"
+    [disableClose]="false"
+  >
+    <app-sidebar (threadSelected)="onThreadSelected()" />
+  </mat-sidenav>
+
+  <mat-sidenav-content class="main-panel">
+    <div class="desktop-sidebar">
+      <app-sidebar (threadSelected)="onThreadSelected()" />
+    </div>
+
+    <div class="chat-main">
+      <button
+        mat-icon-button
+        class="menu-button"
+        type="button"
+        aria-label="Open conversation list"
+        (click)="toggleSidenav()"
+      >
+        <mat-icon>menu</mat-icon>
+      </button>
+
+      <app-chat-window [thread]="currentThread()" />
+      <app-chat-input (send)="onSendMessage($event)" />
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

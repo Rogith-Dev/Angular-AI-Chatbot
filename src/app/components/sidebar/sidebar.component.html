@@ -1,0 +1,49 @@
+<div class="sidebar">
+  <div class="sidebar-header">
+    <div class="brand">
+      <mat-icon>auto_awesome</mat-icon>
+      <span>AI Chat</span>
+    </div>
+    <button mat-stroked-button class="new-chat-btn" (click)="onNewChat()">
+      <mat-icon>add</mat-icon>
+      New Chat
+    </button>
+  </div>
+
+  <nav class="thread-list" aria-label="Conversation threads">
+    @if (threads().length === 0) {
+      <p class="empty-hint">No conversations yet. Start a new chat!</p>
+    } @else {
+      <mat-nav-list>
+        @for (thread of threads(); track thread.id) {
+          <button
+            mat-list-item
+            type="button"
+            class="thread-item"
+            [class.thread-item--active]="thread.id === currentThreadId()"
+            (click)="onSelectThread(thread.id)"
+            [attr.aria-current]="thread.id === currentThreadId() ? 'page' : null"
+          >
+            <mat-icon matListItemIcon>chat</mat-icon>
+            <span matListItemTitle class="thread-title">{{ thread.title }}</span>
+            <span matListItemLine class="thread-meta">
+              {{ thread.updatedAt | date: 'MMM d, h:mm a' }}
+            </span>
+
+            <button
+              mat-icon-button
+              matListItemMeta
+              type="button"
+              class="delete-btn"
+              matTooltip="Delete conversation"
+              aria-label="Delete conversation"
+              (click)="onDeleteThread($event, thread.id)"
+            >
+              <mat-icon>delete_outline</mat-icon>
+            </button>
+          </button>
+        }
+      </mat-nav-list>
+    }
+  </nav>
+</div>

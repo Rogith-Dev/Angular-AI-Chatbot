@@ -1,0 +1,34 @@
+:host {
+  display: block;
+}
+
+.input-area {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.75rem;
+  padding: 1rem 1.25rem 1.25rem;
+  border-top: 1px solid var(--chat-border);
+  background: var(--chat-surface);
+}
+
+.input-field {
+  flex: 1;
+  margin: 0;
+
+  textarea {
+    resize: none;
+    line-height: 1.5;
+    color: #ffffff;
+  }
+}
+
+.send-button {
+  flex-shrink: 0;
+  margin-bottom: 0.35rem;
+}
+
+@media (max-width: 768px) {
+  .input-area {
+    padding: 0.75rem;
+  }
+}

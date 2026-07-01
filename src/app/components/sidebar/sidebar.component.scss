@@ -1,0 +1,99 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--chat-sidebar-bg);
+  border-right: 1px solid var(--chat-border);
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+}
+
+.sidebar-header {
+  padding: 1rem;
+  border-bottom: 1px solid var(--chat-border);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--chat-text-primary);
+
+  mat-icon {
+    color: var(--chat-accent);
+  }
+}
+
+.new-chat-btn {
+  width: 100%;
+  justify-content: flex-start;
+  gap: 0.5rem;
+}
+
+.thread-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0.5rem 0;
+}
+
+.empty-hint {
+  padding: 1rem;
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--chat-text-secondary);
+  text-align: center;
+}
+
+.thread-item {
+  cursor: pointer;
+  margin: 0 0.5rem 0.25rem;
+  border-radius: 0.5rem;
+  transition: background 0.15s ease;
+
+  &:hover {
+    background: rgb(0 0 0 / 4%);
+  }
+
+  &--active {
+    background: var(--chat-accent-soft);
+
+    .thread-title {
+      color: var(--chat-accent);
+      font-weight: 600;
+    }
+  }
+}
+
+.thread-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.thread-meta {
+  font-size: 0.75rem;
+  color: var(--chat-text-secondary);
+}
+
+.delete-btn {
+  opacity: 0;
+  transition: opacity 0.15s ease;
+
+  .thread-item:hover & {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .delete-btn {
+    opacity: 1;
+  }
+}

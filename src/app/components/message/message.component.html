@@ -1,0 +1,24 @@
+<div
+  class="message-row"
+  [class.message-row--user]="message().role === 'user'"
+  [class.message-row--assistant]="message().role === 'assistant'"
+>
+  @if (message().role === 'assistant') {
+    <div class="avatar avatar--assistant" aria-hidden="true">
+      <mat-icon>smart_toy</mat-icon>
+    </div>
+  }
+
+  <div class="bubble">
+    <p class="content">{{ message().content }}</p>
+    <time class="timestamp" [attr.datetime]="message().timestamp.toISOString()">
+      {{ message().timestamp | date: 'short' }}
+    </time>
+  </div>
+
+  @if (message().role === 'user') {
+    <div class="avatar avatar--user" aria-hidden="true">
+      <mat-icon>person</mat-icon>
+    </div>
+  }
+</div>

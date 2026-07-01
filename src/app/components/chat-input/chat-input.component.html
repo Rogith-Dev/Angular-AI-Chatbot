@@ -1,0 +1,27 @@
+<div class="input-area">
+  <mat-form-field appearance="outline" class="input-field" subscriptSizing="dynamic">
+    <mat-label>Message</mat-label>
+    <textarea
+      matInput
+      rows="3"
+      [(ngModel)]="message"
+      [disabled]="isDisabled()"
+      placeholder="Send a message…"
+      (keydown)="onKeydown($event)"
+      aria-label="Chat message input"
+    ></textarea>
+    <mat-hint>Enter to send · Shift+Enter for new line</mat-hint>
+  </mat-form-field>
+
+  <button
+    mat-fab
+    color="primary"
+    type="button"
+    class="send-button"
+    [disabled]="isDisabled() || !message.trim()"
+    (click)="onSend()"
+    aria-label="Send message"
+  >
+    <mat-icon>send</mat-icon>
+  </button>
+</div>
