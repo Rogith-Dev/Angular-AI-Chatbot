@@ -8,14 +8,14 @@ import express from 'express';
 import cors from 'cors';
 
 const app = express();
-const PORT = process.env['MOCK_API_PORT'] || 3001;
+const PORT = process.env.PORT || process.env.MOCK_API_PORT || 3001;
 const geminiApiKey = process.env['GEMINI_API_KEY'];
 const geminiModel = process.env['GEMINI_MODEL'] || 'gemini-2.5-flash';
 
 // app.use(cors());
 app.use(cors({
   origin: [
-    "https://angular-ai-chatbot.netlify.app/",
+    "https://angular-ai-chatbot.netlify.app",
     "http://localhost:4200"
   ]
 }));
