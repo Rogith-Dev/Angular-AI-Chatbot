@@ -12,7 +12,14 @@ const PORT = process.env['MOCK_API_PORT'] || 3001;
 const geminiApiKey = process.env['GEMINI_API_KEY'];
 const geminiModel = process.env['GEMINI_MODEL'] || 'gemini-2.5-flash';
 
-app.use(cors());
+// app.use(cors());
+app.use(cors({
+  origin: [
+    "https://angular-ai-chatbot.netlify.app/",
+    "http://localhost:4200"
+  ]
+}));
+
 app.use(express.json());
 
 app.post('/api/chat', async (req, res) => {
