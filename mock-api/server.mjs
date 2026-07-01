@@ -27,7 +27,7 @@ app.use(express.json());
 //   });
 // });
 
-app.post('https://angular-ai-chatbot.onrender.com/api/chat', async (req, res) => {
+app.post('/api/chat', async (req, res) => {
   const { threadId, message } = req.body ?? {};
 
   if (!threadId || !message) {
