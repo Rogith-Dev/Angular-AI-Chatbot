@@ -21,13 +21,13 @@ app.use(cors({
 }));
 
 app.use(express.json());
-app.get('/api/chat', (req, res) => {
-  res.json({
-    status: "API is working"
-  });
-});
+// app.get('/api/chat', (req, res) => {
+//   res.json({
+//     status: "API is working"
+//   });
+// });
 
-app.post('/api/chat', async (req, res) => {
+app.post('https://angular-ai-chatbot.onrender.com/api/chat', async (req, res) => {
   const { threadId, message } = req.body ?? {};
 
   if (!threadId || !message) {
@@ -85,11 +85,6 @@ app.post('/api/chat', async (req, res) => {
 // Health check route
 app.get('/', (req, res) => {
   res.send('Backend is running successfully 🚀');
-});
-
-// Your existing API
-app.post('/api/chat', async (req, res) => {
-  // your existing code...
 });
 
 app.listen(PORT, () => {
