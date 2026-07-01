@@ -3,5 +3,5 @@
  */
 export const environment = {
   production: true,
-  apiUrl: '/api',
+  apiUrl: 'https://my-angular-app.onrender.com/api',
 };

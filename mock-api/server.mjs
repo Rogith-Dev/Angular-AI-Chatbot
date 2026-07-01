@@ -21,6 +21,11 @@ app.use(cors({
 }));
 
 app.use(express.json());
+app.get('/api/chat', (req, res) => {
+  res.json({
+    status: "API is working"
+  });
+});
 
 app.post('/api/chat', async (req, res) => {
   const { threadId, message } = req.body ?? {};
