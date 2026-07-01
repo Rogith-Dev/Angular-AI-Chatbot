@@ -77,6 +77,16 @@ app.post('/api/chat', async (req, res) => {
   }
 });
 
+// Health check route
+app.get('/', (req, res) => {
+  res.send('Backend is running successfully 🚀');
+});
+
+// Your existing API
+app.post('/api/chat', async (req, res) => {
+  // your existing code...
+});
+
 app.listen(PORT, () => {
   console.log(`AI API listening on http://localhost:${PORT}`);
 });
