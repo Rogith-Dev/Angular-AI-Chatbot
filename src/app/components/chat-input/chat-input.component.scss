@@ -9,6 +9,14 @@
   padding: 1rem 1.25rem 1.25rem;
   border-top: 1px solid var(--chat-border);
   background: var(--chat-surface);
+  color: rgb(141, 141, 141);
+
+  &:hover {
+    mat-label {
+      color: rgb(141, 141, 141);
+    }
+  }
+
 }
 
 .input-field {

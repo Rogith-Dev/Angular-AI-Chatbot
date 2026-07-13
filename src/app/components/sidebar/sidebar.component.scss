@@ -64,11 +64,10 @@
 
   &--active {
     background: var(--chat-accent-soft);
-
-    .thread-title {
-      color: var(--chat-accent);
-      font-weight: 600;
-    }
+  }
+  .thread-title {
+    color: var(--chat-accent);
+    font-weight: 600;
   }
 }
 

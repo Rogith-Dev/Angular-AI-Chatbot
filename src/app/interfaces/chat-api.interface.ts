@@ -1,5 +1,5 @@
 /**
- * Contract for the ChatGPT-compatible REST API.
+ * Contract for the Gemini-compatible REST API.
  * Swap the backend URL in environment.ts; the AiService stays unchanged.
  */
 export interface ChatApiRequest {
