@@ -6,7 +6,7 @@
     <mat-hint>Enter to send · Shift+Enter for new line</mat-hint>
   <!-- </mat-form-field> -->
 
-  <button mat-fab color="primary" type="button" class="send-button" [disabled]="isDisabled() || !message.trim()"
+  <button mat-fab color="primary" type="button" class="send-button"
     (click)="onSend()" aria-label="Send message">
     <mat-icon>send</mat-icon>
   </button>
