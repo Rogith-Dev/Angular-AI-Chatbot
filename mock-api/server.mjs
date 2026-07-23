@@ -12,20 +12,9 @@ const PORT = process.env.PORT || process.env.MOCK_API_PORT || 3001;
 const geminiApiKey = process.env['GEMINI_API_KEY'];
 const geminiModel = process.env['GEMINI_MODEL'] || 'gemini-2.5-flash';
 
-// app.use(cors());
-app.use(cors({
-  origin: [
-    "https://angular-ai-chatbot-eight.vercel.app",
-    "http://localhost:4200"
-  ]
-}));
+app.use(cors());
 
 app.use(express.json());
-// app.get('/api/chat', (req, res) => {
-//   res.json({
-//     status: "API is working"
-//   });
-// });
 
 app.post('/api/chat', async (req, res) => {
   const { threadId, message } = req.body ?? {};
