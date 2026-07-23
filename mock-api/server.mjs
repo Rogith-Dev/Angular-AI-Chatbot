@@ -15,7 +15,7 @@ const geminiModel = process.env['GEMINI_MODEL'] || 'gemini-2.5-flash';
 // app.use(cors());
 app.use(cors({
   origin: [
-    "https://angular-ai-chatbot.netlify.app",
+    "https://angular-ai-chatbot-eight.vercel.app",
     "http://localhost:4200"
   ]
 }));
