@@ -1,0 +1,131 @@
+// Design tokens — SaaS dashboard theme
+// Toggle via [data-theme="light"|"dark"] on <html>
+
+:root,
+[data-theme='light'] {
+  color-scheme: light;
+
+  // Surfaces
+  --bg: #f8fafc;
+  --surface: #ffffff;
+  --surface-raised: #ffffff;
+  --sidebar-bg: #f1f5f9;
+  --input-bg: #ffffff;
+
+  // Text
+  --text-primary: #0f172a;
+  --text-secondary: #64748b;
+  --text-muted: #94a3b8;
+  --text-inverse: #ffffff;
+
+  // Brand & accents
+  --primary: #2563eb;
+  --primary-hover: #1d4ed8;
+  --primary-soft: rgb(37 99 235 / 10%);
+  --primary-ring: rgb(37 99 235 / 25%);
+
+  // Borders & dividers
+  --border: #e2e8f0;
+  --border-strong: #cbd5e1;
+
+  // Message bubbles
+  --user-bg: #2563eb;
+  --user-text: #ffffff;
+  --assistant-bg: #ffffff;
+  --assistant-text: #0f172a;
+  --assistant-border: #e2e8f0;
+
+  // Status
+  --success: #16a34a;
+  --warning: #d97706;
+  --error: #dc2626;
+  --error-bg: #fef2f2;
+  --error-text: #991b1b;
+
+  // Shadows
+  --shadow-xs: 0 1px 2px rgb(15 23 42 / 4%);
+  --shadow-sm: 0 1px 3px rgb(15 23 42 / 8%), 0 1px 2px rgb(15 23 42 / 4%);
+  --shadow-md: 0 4px 6px -1px rgb(15 23 42 / 8%), 0 2px 4px -2px rgb(15 23 42 / 6%);
+  --shadow-lg: 0 10px 15px -3px rgb(15 23 42 / 8%), 0 4px 6px -4px rgb(15 23 42 / 6%);
+
+  // Spacing scale (4px base)
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+
+  // Radius
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-full: 9999px;
+
+  // Typography
+  --font-ui: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', ui-monospace, monospace;
+  --text-xs: 0.75rem;
+  --text-sm: 0.8125rem;
+  --text-base: 0.9375rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+
+  // Layout
+  --sidebar-width: min(360px, 28vw);
+  --header-height: 3.5rem;
+  --input-max-height: 12rem;
+
+  // Legacy aliases (used by existing components during migration)
+  --chat-bg: var(--bg);
+  --chat-surface: var(--surface);
+  --chat-sidebar-bg: var(--sidebar-bg);
+  --chat-border: var(--border);
+  --chat-text-primary: var(--text-primary);
+  --chat-text-secondary: var(--text-secondary);
+  --chat-accent: var(--primary);
+  --chat-accent-soft: var(--primary-soft);
+  --chat-user-bg: var(--user-bg);
+  --chat-user-text: var(--user-text);
+  --chat-assistant-bg: var(--assistant-bg);
+  --chat-assistant-text: var(--assistant-text);
+}
+
+[data-theme='dark'] {
+  color-scheme: dark;
+
+  --bg: #0f172a;
+  --surface: #1e293b;
+  --surface-raised: #334155;
+  --sidebar-bg: #1e293b;
+  --input-bg: #1e293b;
+
+  --text-primary: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --text-inverse: #0f172a;
+
+  --primary: #3b82f6;
+  --primary-hover: #60a5fa;
+  --primary-soft: rgb(59 130 246 / 14%);
+  --primary-ring: rgb(59 130 246 / 30%);
+
+  --border: #334155;
+  --border-strong: #475569;
+
+  --user-bg: #2563eb;
+  --user-text: #ffffff;
+  --assistant-bg: #1e293b;
+  --assistant-text: #f1f5f9;
+  --assistant-border: #334155;
+
+  --error-bg: rgb(220 38 38 / 12%);
+  --error-text: #fca5a5;
+
+  --shadow-xs: 0 1px 2px rgb(0 0 0 / 20%);
+  --shadow-sm: 0 1px 3px rgb(0 0 0 / 30%), 0 1px 2px rgb(0 0 0 / 20%);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 35%), 0 2px 4px -2px rgb(0 0 0 / 25%);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 40%), 0 4px 6px -4px rgb(0 0 0 / 30%);
+}

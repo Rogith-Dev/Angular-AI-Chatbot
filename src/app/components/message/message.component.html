@@ -10,7 +10,11 @@
   }
 
   <div class="bubble">
-    <p class="content">{{ message().content }}</p>
+    @if (message().role === 'assistant') {
+      <div class="content markdown-content" [innerHTML]="message().content | markdown"></div>
+    } @else {
+      <p class="content">{{ message().content }}</p>
+    }
     <time class="timestamp" [attr.datetime]="message().timestamp.toISOString()">
       {{ message().timestamp | date: 'short' }}
     </time>

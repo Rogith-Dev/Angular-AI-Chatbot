@@ -1,4 +1,6 @@
 @use '@angular/material' as mat;
+@use 'styles/theme';
+@use 'styles/markdown';
 
 @include mat.core();
 
@@ -7,11 +9,11 @@ $chat-theme: mat.define-theme(
     color: (
       theme-type: light,
       primary: mat.$azure-palette,
-      tertiary: mat.$violet-palette,
+      tertiary: mat.$blue-palette,
     ),
     typography: (
-      brand-family: 'Inter, Roboto, Helvetica Neue, sans-serif',
-      plain-family: 'Inter, Roboto, Helvetica Neue, sans-serif',
+      brand-family: 'Inter, system-ui, sans-serif',
+      plain-family: 'Inter, system-ui, sans-serif',
     ),
     density: (
       scale: 0,
@@ -21,21 +23,6 @@ $chat-theme: mat.define-theme(
 
 html {
   @include mat.all-component-themes($chat-theme);
-}
-
-:root {
-  --chat-bg: #f7f8fa;
-  --chat-surface: #ffffff;
-  --chat-sidebar-bg: #f0f2f5;
-  --chat-border: #e2e5ea;
-  --chat-text-primary: #1a1d21;
-  --chat-text-secondary: #5c6370;
-  --chat-accent: #2563eb;
-  --chat-accent-soft: rgb(37 99 235 / 10%);
-  --chat-user-bg: #2563eb;
-  --chat-user-text: #ffffff;
-  --chat-assistant-bg: #ffffff;
-  --chat-assistant-text: #1a1d21;
 }
 
 *,
@@ -51,31 +38,46 @@ body {
 }
 
 body {
-  font-family: Inter, Roboto, 'Helvetica Neue', sans-serif;
-  background: var(--chat-bg);
-  color: var(--chat-text-primary);
+  font-family: var(--font-ui);
+  font-size: var(--text-base);
+  background: var(--bg);
+  color: var(--text-primary);
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-.error-snackbar {
-  --mdc-snackbar-container-color: #b91c1c;
+// Material overrides for SaaS polish
+.mat-mdc-form-field {
+  --mdc-outlined-text-field-outline-color: var(--border);
+  --mdc-outlined-text-field-hover-outline-color: var(--border-strong);
+  --mdc-outlined-text-field-focus-outline-color: var(--primary);
+  --mdc-outlined-text-field-label-text-color: var(--text-secondary);
+  --mdc-outlined-text-field-input-text-color: var(--text-primary);
+  --mdc-outlined-text-field-caret-color: var(--primary);
+  --mat-form-field-container-text-size: var(--text-base);
+}
+
+.mat-mdc-snack-bar-container.error-snackbar {
+  --mdc-snackbar-container-color: var(--error);
   --mdc-snackbar-supporting-text-color: #ffffff;
   --mat-snack-bar-button-color: #ffffff;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --chat-bg: #111318;
-    --chat-surface: #1a1d24;
-    --chat-sidebar-bg: #151820;
-    --chat-border: #2a2f3a;
-    --chat-text-primary: #f3f4f6;
-    --chat-text-secondary: #9ca3af;
-    --chat-accent: #60a5fa;
-    --chat-accent-soft: rgb(96 165 250 / 12%);
-    --chat-user-bg: #2563eb;
-    --chat-user-text: #ffffff;
-    --chat-assistant-bg: #1f2430;
-    --chat-assistant-text: #f3f4f6;
+// Scrollbar styling
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: var(--radius-full);
+
+  &:hover {
+    background: var(--text-muted);
   }
 }

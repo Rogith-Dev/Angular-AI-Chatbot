@@ -43,6 +43,7 @@ export class ChatLayoutComponent implements OnInit {
   readonly currentThread = this.threadService.currentThread;
 
   private readonly chatWindow = viewChild(ChatWindowComponent);
+  private readonly chatInput = viewChild(ChatInputComponent);
   readonly sidenavOpen = signal(false);
 
   constructor() {
@@ -87,6 +88,10 @@ export class ChatLayoutComponent implements OnInit {
         });
       },
     });
+  }
+
+  onHintSelected(text: string): void {
+    this.chatInput()?.setMessage(text);
   }
 
   onThreadSelected(): void {

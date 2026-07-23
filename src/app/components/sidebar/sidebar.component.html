@@ -1,20 +1,31 @@
 <div class="sidebar">
   <div class="sidebar-header">
     <div class="brand">
-      <mat-icon>auto_awesome</mat-icon>
-      <span>AI Chat</span>
+      <div class="brand-icon" aria-hidden="true">
+        <mat-icon>auto_awesome</mat-icon>
+      </div>
+      <div class="brand-text">
+        <span class="brand-name">AI Workspace</span>
+        <span class="brand-tag">Gemini</span>
+      </div>
     </div>
-    <button mat-stroked-button class="new-chat-btn" (click)="onNewChat()">
+    <button mat-flat-button color="primary" class="new-chat-btn" (click)="onNewChat()">
       <mat-icon>add</mat-icon>
       New Chat
     </button>
   </div>
 
   <nav class="thread-list" aria-label="Conversation threads">
+    <p class="section-label">Recent</p>
+
     @if (threads().length === 0) {
-      <p class="empty-hint">No conversations yet. Start a new chat!</p>
+      <div class="empty-hint">
+        <mat-icon>inbox</mat-icon>
+        <p>No conversations yet</p>
+        <span>Start a new chat to begin</span>
+      </div>
     } @else {
-      <mat-nav-list>
+      <mat-nav-list class="thread-nav">
         @for (thread of threads(); track thread.id) {
           <button
             mat-list-item
@@ -24,7 +35,7 @@
             (click)="onSelectThread(thread.id)"
             [attr.aria-current]="thread.id === currentThreadId() ? 'page' : null"
           >
-            <mat-icon matListItemIcon>chat</mat-icon>
+            <mat-icon matListItemIcon class="thread-icon">chat_bubble_outline</mat-icon>
             <span matListItemTitle class="thread-title">{{ thread.title }}</span>
             <span matListItemLine class="thread-meta">
               {{ thread.updatedAt | date: 'MMM d, h:mm a' }}
@@ -46,4 +57,17 @@
       </mat-nav-list>
     }
   </nav>
+
+  <footer class="sidebar-footer">
+    <button
+      mat-icon-button
+      type="button"
+      class="theme-toggle"
+      [attr.aria-label]="themeService.theme() === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'"
+      (click)="themeService.toggle()"
+    >
+      <mat-icon>{{ themeService.theme() === 'dark' ? 'light_mode' : 'dark_mode' }}</mat-icon>
+    </button>
+    <span class="footer-label">{{ themeService.theme() === 'dark' ? 'Dark' : 'Light' }} mode</span>
+  </footer>
 </div>

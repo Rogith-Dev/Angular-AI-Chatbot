@@ -4,18 +4,25 @@
 
 .message-row {
   display: flex;
-  align-items: flex-end;
-  gap: 0.75rem;
-  margin-bottom: 1.25rem;
-  animation: fade-in 0.25s ease-out;
+  align-items: flex-start;
+  gap: var(--space-3);
+  margin-bottom: var(--space-5);
+  animation: message-in 0.3s ease-out both;
 
   &--user {
     justify-content: flex-end;
 
     .bubble {
-      background: var(--chat-user-bg);
-      color: var(--chat-user-text);
-      border-bottom-right-radius: 0.25rem;
+      background: var(--user-bg);
+      color: var(--user-text);
+      border: none;
+      border-bottom-right-radius: var(--radius-sm);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .timestamp {
+      text-align: right;
+      color: rgb(255 255 255 / 70%);
     }
   }
 
@@ -23,20 +30,23 @@
     justify-content: flex-start;
 
     .bubble {
-      background: var(--chat-assistant-bg);
-      color: var(--chat-assistant-text);
-      border-bottom-left-radius: 0.25rem;
+      background: var(--assistant-bg);
+      color: var(--assistant-text);
+      border: 1px solid var(--assistant-border);
+      border-bottom-left-radius: var(--radius-sm);
+      box-shadow: var(--shadow-xs);
     }
   }
 }
 
 .avatar {
   flex-shrink: 0;
-  width: 2rem;
-  height: 2rem;
-  border-radius: 50%;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: var(--radius-md);
   display: grid;
   place-items: center;
+  margin-top: 0.125rem;
 
   mat-icon {
     font-size: 1.125rem;
@@ -45,41 +55,46 @@
   }
 
   &--assistant {
-    background: var(--chat-accent-soft);
-    color: var(--chat-accent);
+    background: var(--primary-soft);
+    color: var(--primary);
+    border: 1px solid var(--primary-ring);
   }
 
   &--user {
-    background: var(--chat-user-bg);
-    color: var(--chat-user-text);
+    background: var(--user-bg);
+    color: var(--user-text);
   }
 }
 
 .bubble {
-  max-width: min(75%, 42rem);
-  padding: 0.875rem 1rem;
-  border-radius: 1rem;
-  box-shadow: 0 1px 2px rgb(0 0 0 / 6%);
+  max-width: min(78%, 44rem);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-xl);
+  transition: box-shadow 0.15s ease;
+
+  &:hover {
+    box-shadow: var(--shadow-sm);
+  }
 }
 
 .content {
   margin: 0;
   white-space: pre-wrap;
   word-break: break-word;
-  line-height: 1.55;
+  line-height: 1.6;
 }
 
 .timestamp {
   display: block;
-  margin-top: 0.5rem;
-  font-size: 0.6875rem;
-  opacity: 0.65;
+  margin-top: var(--space-2);
+  font-size: var(--text-xs);
+  color: var(--text-muted);
 }
 
-@keyframes fade-in {
+@keyframes message-in {
   from {
     opacity: 0;
-    transform: translateY(6px);
+    transform: translateY(8px);
   }
 
   to {
@@ -90,6 +105,11 @@
 
 @media (max-width: 768px) {
   .bubble {
-    max-width: 88%;
+    max-width: 90%;
+  }
+
+  .avatar {
+    width: 2rem;
+    height: 2rem;
   }
 }

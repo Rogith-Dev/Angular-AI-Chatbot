@@ -4,6 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { ThemeService } from '../../services/theme.service';
 import { ThreadService } from '../../services/thread.service';
 
 /** Left sidebar listing conversation threads. */
@@ -16,6 +17,7 @@ import { ThreadService } from '../../services/thread.service';
 })
 export class SidebarComponent {
   private readonly threadService = inject(ThreadService);
+  readonly themeService = inject(ThemeService);
 
   readonly threads = this.threadService.threads;
   readonly currentThreadId = this.threadService.currentThreadId;

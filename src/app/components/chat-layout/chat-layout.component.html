@@ -11,11 +11,11 @@
   </mat-sidenav>
 
   <mat-sidenav-content class="main-panel">
-    <div class="desktop-sidebar">
+    <aside class="desktop-sidebar" aria-label="Conversation history">
       <app-sidebar (threadSelected)="onThreadSelected()" />
-    </div>
+    </aside>
 
-    <div class="chat-main">
+    <main class="chat-main">
       <button
         mat-icon-button
         class="menu-button"
@@ -26,8 +26,11 @@
         <mat-icon>menu</mat-icon>
       </button>
 
-      <app-chat-window [thread]="currentThread()" />
+      <app-chat-window
+        [thread]="currentThread()"
+        (hintSelected)="onHintSelected($event)"
+      />
       <app-chat-input (send)="onSendMessage($event)" />
-    </div>
+    </main>
   </mat-sidenav-content>
 </mat-sidenav-container>

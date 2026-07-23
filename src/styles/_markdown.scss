@@ -1,0 +1,141 @@
+// Shared markdown content styles (used inside message bubbles)
+
+.markdown-content {
+  line-height: 1.6;
+  font-size: var(--text-base);
+  word-break: break-word;
+
+  > *:first-child {
+    margin-top: 0;
+  }
+
+  > *:last-child {
+    margin-bottom: 0;
+  }
+
+  p {
+    margin: 0 0 0.75em;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    margin: 1em 0 0.5em;
+    font-weight: 600;
+    line-height: 1.3;
+    color: inherit;
+  }
+
+  h1 {
+    font-size: 1.375em;
+  }
+
+  h2 {
+    font-size: 1.2em;
+  }
+
+  h3 {
+    font-size: 1.05em;
+  }
+
+  ul,
+  ol {
+    margin: 0 0 0.75em;
+    padding-left: 1.5em;
+  }
+
+  li {
+    margin-bottom: 0.25em;
+  }
+
+  strong {
+    font-weight: 600;
+  }
+
+  em {
+    font-style: italic;
+  }
+
+  a {
+    color: var(--primary);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+
+    &:hover {
+      color: var(--primary-hover);
+    }
+  }
+
+  code {
+    font-family: var(--font-mono);
+    font-size: 0.875em;
+    padding: 0.15em 0.4em;
+    border-radius: var(--radius-sm);
+    background: var(--primary-soft);
+    color: inherit;
+  }
+
+  pre {
+    margin: 0.75em 0;
+    padding: var(--space-4);
+    border-radius: var(--radius-md);
+    background: var(--bg);
+    border: 1px solid var(--border);
+    overflow-x: auto;
+
+    code {
+      padding: 0;
+      background: transparent;
+      font-size: var(--text-sm);
+      line-height: 1.5;
+    }
+  }
+
+  blockquote {
+    margin: 0.75em 0;
+    padding-left: var(--space-4);
+    border-left: 3px solid var(--border-strong);
+    color: var(--text-secondary);
+  }
+
+  hr {
+    margin: 1em 0;
+    border: none;
+    border-top: 1px solid var(--border);
+  }
+
+  table {
+    width: 100%;
+    margin: 0.75em 0;
+    border-collapse: collapse;
+    font-size: var(--text-sm);
+  }
+
+  th,
+  td {
+    padding: var(--space-2) var(--space-3);
+    border: 1px solid var(--border);
+    text-align: left;
+  }
+
+  th {
+    background: var(--bg);
+    font-weight: 600;
+  }
+}
+
+.message-row--user .markdown-content {
+  code {
+    background: rgb(255 255 255 / 15%);
+  }
+
+  pre {
+    background: rgb(0 0 0 / 15%);
+    border-color: rgb(255 255 255 / 20%);
+  }
+
+  a {
+    color: #bfdbfe;
+  }
+}

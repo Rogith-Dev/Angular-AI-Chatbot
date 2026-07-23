@@ -1,30 +1,65 @@
 <div class="chat-window">
   <header class="chat-header">
-    <h1 class="chat-title">{{ thread()?.title ?? 'AI Assistant' }}</h1>
-    <p class="chat-subtitle">Ask anything — powered by a Gemini-compatible API</p>
+    <div class="header-content">
+      <div class="header-text">
+        <h1 class="chat-title">{{ thread()?.title ?? 'AI Assistant' }}</h1>
+        <p class="chat-subtitle">Powered by Gemini · Professional workspace</p>
+      </div>
+      <button
+        mat-icon-button
+        type="button"
+        class="theme-toggle"
+        [attr.aria-label]="themeService.theme() === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'"
+        (click)="themeService.toggle()"
+      >
+        <mat-icon>{{ themeService.theme() === 'dark' ? 'light_mode' : 'dark_mode' }}</mat-icon>
+      </button>
+    </div>
   </header>
 
   <div #messagesContainer class="messages" role="log" aria-live="polite" aria-relevant="additions">
     @if (!thread() || thread()!.messages.length === 0) {
       <div class="empty-state">
-        <mat-icon class="empty-icon">chat_bubble_outline</mat-icon>
-        <h2>Start a conversation</h2>
-        <p>Type a message below or create a new chat from the sidebar.</p>
+        <div class="empty-state__icon">
+          <mat-icon>forum</mat-icon>
+        </div>
+        <h2 class="empty-state__title">No conversation yet</h2>
+        <p class="empty-state__desc">
+          Start by typing a message below. Your AI assistant can help with writing, analysis, coding, and more.
+        </p>
+        <div class="empty-state__hints">
+          <button type="button" class="hint-chip" (click)="useHint('Summarize my notes')">
+            Summarize my notes
+          </button>
+          <button type="button" class="hint-chip" (click)="useHint('Explain this concept simply')">
+            Explain a concept
+          </button>
+          <button type="button" class="hint-chip" (click)="useHint('Help me write an email')">
+            Draft an email
+          </button>
+        </div>
       </div>
     } @else {
-      @for (msg of thread()!.messages; track msg.timestamp.getTime() + msg.role) {
-        <app-message [message]="msg" />
-      }
+      <div class="messages-list">
+        @for (msg of thread()!.messages; track msg.timestamp.getTime() + msg.role) {
+          <app-message [message]="msg" />
+        }
+      </div>
     }
 
     @if (isLoading()) {
-      <div class="typing-indicator" aria-label="AI is typing">
-        <div class="typing-dots">
-          <span></span>
-          <span></span>
-          <span></span>
+      <div class="typing-indicator" aria-label="AI is thinking">
+        <div class="avatar avatar--assistant" aria-hidden="true">
+          <mat-icon>smart_toy</mat-icon>
         </div>
-        <span class="typing-label">AI is thinking…</span>
+        <div class="typing-bubble">
+          <div class="typing-dots">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <span class="typing-label">Thinking…</span>
+        </div>
       </div>
     }
   </div>
